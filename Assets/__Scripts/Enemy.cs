@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private BoundsCheck bndCheck;
+    protected BoundsCheck bndCheck;
 
     private void Awake()
     {
