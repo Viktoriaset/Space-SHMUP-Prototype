@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PowerUp : MonoBehaviour
@@ -25,7 +23,7 @@ public class PowerUp : MonoBehaviour
     {
         cube = transform.Find("Cube").gameObject;
         letter = GetComponent<TextMesh>();
-        rigid = GetComponent<Rigidbody>();  
+        rigid = GetComponent<Rigidbody>();
         bndCheck = GetComponent<BoundsCheck>();
         cubeRend = cube.GetComponent<Renderer>();
 

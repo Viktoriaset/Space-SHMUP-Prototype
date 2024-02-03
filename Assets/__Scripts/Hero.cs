@@ -14,6 +14,7 @@ public class Hero : MonoBehaviour
     [SerializeField] private float projectileSpeed;
 
     public float gameRestartDelay = 2f;
+    public Weapon[] weapons;
     
 
     [Header("Set dynamically")]
@@ -34,6 +35,12 @@ public class Hero : MonoBehaviour
         {
             Debug.LogError("Hero.Awake() - Attempted to assign second Hero.S!");
         }
+    }
+
+    private void Start()
+    {
+        ClearWeapons();
+        weapons[0].SetType(WeaponType.blaster);
     }
 
     private void Update()
@@ -82,6 +89,10 @@ public class Hero : MonoBehaviour
             shieldLevel--;
             Destroy(go);
         }
+        else if (go.tag == "PowerUp")
+        {
+            AbsorbPowerUp(go);
+        }
         else
         {
             print("Triggered by non-Enemy: " + go.name);
@@ -104,6 +115,53 @@ public class Hero : MonoBehaviour
                 Destroy(gameObject);
                 Main.S.DelayedRestart(gameRestartDelay);
             }
+        }
+    }
+
+    private void AbsorbPowerUp(GameObject go)
+    {
+        PowerUp pu = go.GetComponent<PowerUp>();
+        switch(pu.type)
+        {
+            case WeaponType.shield:
+                shieldLevel++;
+                break;
+
+            default:
+                if (pu.type == weapons[0].type)
+                {
+                    Weapon w = GetEmptyWeaponSlot();
+                    if (w != null)
+                    {
+                        w.SetType(pu.type);
+                    }
+                } else
+                {
+                    ClearWeapons();
+                    weapons[0].SetType(pu.type);
+                }
+                break;
+        }
+        pu.AbsorbedBy(gameObject);
+    }
+
+    private Weapon GetEmptyWeaponSlot()
+    {
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            if (weapons[i].type == WeaponType.none)
+            {
+                return weapons[i];
+            }
+        }
+        return null;
+    }
+
+    private void ClearWeapons()
+    {
+        foreach(Weapon w in weapons)
+        {
+            w.SetType(WeaponType.none);
         }
     }
 }

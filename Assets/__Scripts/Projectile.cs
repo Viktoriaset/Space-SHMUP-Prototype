@@ -32,13 +32,18 @@ public class Projectile : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
     }
 
-    private void Update()
+    void Update()
     {
         if (bndCheck.offUp)
         {
             Destroy(gameObject);
         }
+
+        Move();
     }
+
+    protected virtual void Move() { }
+
     /// <summary>
     /// Изменяет скрытое поле _type и устанавливает цвет этого снаряда,
     /// как определенно в WeaponDifinition.
@@ -48,6 +53,12 @@ public class Projectile : MonoBehaviour
     {
         _type = eType;
         WeaponDefinition def = Main.GetWeaponDefinition(_type);
-        rend.material.color = def.projectileColor;
+        ChangeColor(def.projectileColor);
+        
+    }
+
+    protected virtual void ChangeColor(Color c)
+    {
+        rend.material.color = c;
     }
 }

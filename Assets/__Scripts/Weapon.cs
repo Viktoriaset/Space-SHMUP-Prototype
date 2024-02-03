@@ -121,9 +121,19 @@ public class Weapon : MonoBehaviour
                 p.transform.rotation = Quaternion.AngleAxis(10, Vector3.back);
                 p.rigid.velocity = p.transform.rotation * vel;
 
-                p = MakeProjectile();
+                p = MakeProjectile(); // fly left 
                 p.transform.rotation = Quaternion.AngleAxis(-10, Vector3.back);
                 p.rigid.velocity = p.transform.rotation * vel;
+                break;
+
+            case WeaponType.phaser:
+                p = MakeProjectile();
+                p.rigid.velocity = vel;
+
+                p = MakeProjectile();
+                p.rigid.velocity = vel;
+                ProjectilePhaser pp = p as ProjectilePhaser;
+                pp.frequencyOffset = 1;
                 break;
         }
     }
