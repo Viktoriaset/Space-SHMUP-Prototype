@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileRacket : Projectile
@@ -6,8 +8,8 @@ public class ProjectileRacket : Projectile
     public float speed = 10f;
 
     [Header("Set dynamicaly: ProjectileRacket")]
-    private Transform target;
-    private GameObject[] enemies;
+    public Transform target;
+    public GameObject[] enemies;
 
     private void Start()
     {
@@ -22,7 +24,7 @@ public class ProjectileRacket : Projectile
             Destroy(gameObject);
             return;
         }
-
+            
 
         target = enemies[0].transform;
         float distance = Vector3.Distance(target.position, transform.position);
@@ -49,9 +51,12 @@ public class ProjectileRacket : Projectile
             return;
         }
 
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
         if (enemies.Length == 0)
         {
             rigid.velocity = Vector3.up * speed;
+            transform.rotation = Quaternion.FromToRotation(Vector3.up, Vector3.up);
             return;
         }
 

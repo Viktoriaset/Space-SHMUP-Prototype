@@ -80,7 +80,7 @@ MonoBehaviour:
   speed: 10
   fireRate: 0.3
   health: 10
-  score: 100
+  score: 1000
   showDamageDuration: 0.1
   powerUpDropChance: 1
   originalColors: []

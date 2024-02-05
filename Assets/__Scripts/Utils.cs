@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,8 +12,8 @@ public class Utils : MonoBehaviour
         foreach (Renderer r in rends)
             mats.Add(r.material);
 
-        return mats.ToArray();
+        return mats.ToArray();  
     }
 
-
+    
 }

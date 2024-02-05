@@ -1,4 +1,5 @@
 using System;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -60,7 +61,7 @@ public class Enemy_4 : Enemy
     public override void Move()
     {
         float u = (Time.time - timeStart) / duration;
-
+        
         if (u >= 1)
         {
             InitMovement();
@@ -73,7 +74,7 @@ public class Enemy_4 : Enemy
 
     Part FindPart(string n)
     {
-        foreach (Part prt in parts)
+        foreach(Part prt in parts)
         {
             if (prt.name == n)
             {
@@ -86,7 +87,7 @@ public class Enemy_4 : Enemy
 
     Part FindPart(GameObject go)
     {
-        foreach (Part prt in parts)
+        foreach(Part prt in parts)
         {
             if (prt.go == go)
             {
@@ -159,14 +160,14 @@ public class Enemy_4 : Enemy
 
                 prtHit.health -= Main.GetWeaponDefinition(p.type).damageOnHit;
                 ShowLocalizedDamage(prtHit.material);
-
+                
                 if (prtHit.health <= 0)
                 {
                     prtHit.go.SetActive(false);
                 }
 
                 bool allDestroyed = true;
-                foreach (Part prt in parts)
+                foreach(Part prt in parts)
                 {
                     if (!Destroyed(prt))
                     {

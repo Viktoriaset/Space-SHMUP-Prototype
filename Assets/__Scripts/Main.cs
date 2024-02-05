@@ -36,6 +36,8 @@ public class Main : MonoBehaviour
         {
             WEAP_DICT[def.type] = def;
         }
+
+        score.text = "Score: " + points;
     }
 
     private void SpawnEnemy()

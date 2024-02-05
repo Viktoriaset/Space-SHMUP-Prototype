@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -47,12 +49,12 @@ public class Projectile : MonoBehaviour
     /// как определенно в WeaponDifinition.
     /// </summary>
     /// <param name="eType">Тип WeaponType используемого оружия </param>
-    public void SetType(WeaponType eType)
+    public void  SetType(WeaponType eType)
     {
         _type = eType;
         WeaponDefinition def = Main.GetWeaponDefinition(_type);
         ChangeColorOnAllMaterial(def.projectileColor);
-
+        
     }
 
     protected virtual void ChangeColor(Color c)
@@ -63,7 +65,7 @@ public class Projectile : MonoBehaviour
     protected virtual void ChangeColorOnAllMaterial(Color c)
     {
         Material[] mats = Utils.GetAllMaterials(gameObject);
-        foreach (Material mat in mats)
+        foreach(Material mat in mats)
         {
             mat.color = c;
         }
