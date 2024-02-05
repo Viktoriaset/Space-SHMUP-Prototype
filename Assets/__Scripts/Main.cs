@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,7 @@ public class Main : MonoBehaviour
     static Dictionary<WeaponType, WeaponDefinition> WEAP_DICT;
 
     [Header("Set in inspector")]
+    public TextMeshProUGUI score;
     public GameObject[] prefabEnemies;
     public float enemySpawnPerSecond = 0.5f;
     public float enemyDefaultPadding = 1.5f;
@@ -20,8 +22,7 @@ public class Main : MonoBehaviour
         WeaponType.spread, WeaponType.shield
     };
 
-
-
+    private int points = 0;
     private BoundsCheck bndCheck;
 
     private void Awake()
@@ -68,11 +69,15 @@ public class Main : MonoBehaviour
 
     private void Restart()
     {
-        SceneManager.LoadScene("_Scene_0");
+        Records.AddRecod(points);
+        SceneManager.LoadScene("Menu");
     }
 
     public void ShipDestroyed(Enemy e)
     {
+        points += e.score;
+        score.text = "Score: " + points;
+
         if (Random.value <= e.powerUpDropChance)
         {
             int ndx = Random.Range(0, powerUpFrequency.Length);

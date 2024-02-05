@@ -61,18 +61,6 @@ public class Hero : MonoBehaviour
         }
     }
 
-    private void TempFire()
-    {
-        GameObject projGO = Instantiate(projectilePrefab);
-        projGO.transform.position = transform.position;
-        Rigidbody rigidBD = projGO.GetComponent<Rigidbody>();
-
-        Projectile proj = projGO.GetComponent<Projectile>();
-        proj.type = WeaponType.blaster;
-        float tSpeed = Main.GetWeaponDefinition(proj.type).velocity;
-        rigidBD.velocity = Vector3.up * tSpeed;
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         Transform rootT = other.transform.root;

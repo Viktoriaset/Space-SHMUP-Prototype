@@ -135,6 +135,11 @@ public class Weapon : MonoBehaviour
                 ProjectilePhaser pp = p as ProjectilePhaser;
                 pp.frequencyOffset = 1;
                 break;
+
+            case WeaponType.missile:
+                p = MakeProjectile();
+                p.GetComponent<ProjectileRacket>().speed = def.velocity;
+                break;
         }
     }
 

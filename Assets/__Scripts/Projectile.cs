@@ -53,12 +53,21 @@ public class Projectile : MonoBehaviour
     {
         _type = eType;
         WeaponDefinition def = Main.GetWeaponDefinition(_type);
-        ChangeColor(def.projectileColor);
+        ChangeColorOnAllMaterial(def.projectileColor);
         
     }
 
     protected virtual void ChangeColor(Color c)
     {
         rend.material.color = c;
+    }
+
+    protected virtual void ChangeColorOnAllMaterial(Color c)
+    {
+        Material[] mats = Utils.GetAllMaterials(gameObject);
+        foreach(Material mat in mats)
+        {
+            mat.color = c;
+        }
     }
 }

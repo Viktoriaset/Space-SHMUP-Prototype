@@ -90,13 +90,13 @@ MonoBehaviour:
   notifiedOfDestruction: 0
   parts:
   - name: Cockpit
-    health: 10
+    health: 2
     protectedBy:
     - Fuselage
     go: {fileID: 0}
     material: {fileID: 0}
   - name: Fuselage
-    health: 10
+    health: 6
     protectedBy:
     - WingL
     - WingR
