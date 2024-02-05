@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -83,10 +81,10 @@ public class Weapon : MonoBehaviour
         {
             gameObject.SetActive(false);
             return;
-        } 
+        }
         else
         {
-            gameObject.SetActive(true);  
+            gameObject.SetActive(true);
         }
         def = Main.GetWeaponDefinition(_type);
         collarRend.material.color = def.color;
@@ -106,7 +104,7 @@ public class Weapon : MonoBehaviour
             vel.y = -vel.y;
         }
 
-        switch(type)
+        switch (type)
         {
             case WeaponType.blaster:
                 p = MakeProjectile();

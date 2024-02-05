@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Parallax : MonoBehaviour
@@ -37,7 +35,8 @@ public class Parallax : MonoBehaviour
         if (tY >= 0)
         {
             panels[1].transform.position = new Vector3(tX, tY - panelHt, depth);
-        } else
+        }
+        else
         {
             panels[1].transform.position = new Vector3(tX, tY + panelHt, depth);
         }

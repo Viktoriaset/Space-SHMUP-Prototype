@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Hero : MonoBehaviour
@@ -15,7 +13,7 @@ public class Hero : MonoBehaviour
 
     public float gameRestartDelay = 2f;
     public Weapon[] weapons;
-    
+
 
     [Header("Set dynamically")]
     [SerializeField]
@@ -31,7 +29,8 @@ public class Hero : MonoBehaviour
         if (S == null)
         {
             S = this;
-        } else
+        }
+        else
         {
             Debug.LogError("Hero.Awake() - Attempted to assign second Hero.S!");
         }
@@ -109,7 +108,7 @@ public class Hero : MonoBehaviour
     private void AbsorbPowerUp(GameObject go)
     {
         PowerUp pu = go.GetComponent<PowerUp>();
-        switch(pu.type)
+        switch (pu.type)
         {
             case WeaponType.shield:
                 shieldLevel++;
@@ -123,7 +122,8 @@ public class Hero : MonoBehaviour
                     {
                         w.SetType(pu.type);
                     }
-                } else
+                }
+                else
                 {
                     ClearWeapons();
                     weapons[0].SetType(pu.type);
@@ -147,7 +147,7 @@ public class Hero : MonoBehaviour
 
     private void ClearWeapons()
     {
-        foreach(Weapon w in weapons)
+        foreach (Weapon w in weapons)
         {
             w.SetType(WeaponType.none);
         }

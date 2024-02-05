@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileRacket : Projectile
@@ -24,7 +22,7 @@ public class ProjectileRacket : Projectile
             Destroy(gameObject);
             return;
         }
-            
+
 
         target = enemies[0].transform;
         float distance = Vector3.Distance(target.position, transform.position);

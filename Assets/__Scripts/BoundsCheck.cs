@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq.Expressions;
 using UnityEngine;
 
 /// <summary>
@@ -32,7 +29,7 @@ public class BoundsCheck : MonoBehaviour
         Vector3 pos = transform.position;
         isOnScreen = true;
         offRight = offLeft = offUp = offDown = false;
-        
+
         if (pos.x > camWidth - radius)
         {
             pos.x = camWidth - radius;

@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Scripting.APIUpdating;
 
 public class Enemy : MonoBehaviour
 {
@@ -109,7 +105,7 @@ public class Enemy : MonoBehaviour
 
     private void ShowDamage()
     {
-        foreach(Material m in materials)
+        foreach (Material m in materials)
         {
             m.color = Color.red;
         }
